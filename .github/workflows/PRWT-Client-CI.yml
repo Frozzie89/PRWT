@@ -1,4 +1,4 @@
-name: BRWTAB Client CI
+name: PRWT Client CI
 
 on:
   push:
