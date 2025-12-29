@@ -1,2 +1,2 @@
-# BRWTAB
-Phrase Ranker With Template and AntiBot
+# PRWT
+Phrase Ranker With Template
