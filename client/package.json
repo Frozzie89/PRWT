@@ -8,8 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCI",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write ."
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,html,scss}\"",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,10 @@
     "@angular/cli": "^18.2.9",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "21.0.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -38,6 +43,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.7.4",
     "puppeteer": "^24.34.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.46.4"
   }
 }
