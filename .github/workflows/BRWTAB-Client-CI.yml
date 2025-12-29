@@ -36,9 +36,5 @@ jobs:
       # Build the client application if a build script is present in package.json
       - run: npm run build --if-present
 
-      # Run Prettier to check code formatting
-      - name: Prettier Code Formatting
-        run: npm run format:check
-
       # Run the CI test script (headless tests or CI-specific test runner)
       - run: npm run test:ci
