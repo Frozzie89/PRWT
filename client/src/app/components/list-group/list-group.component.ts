@@ -8,6 +8,7 @@ import { ListGroup } from '../../types/list-group';
   styleUrl: './list-group.component.scss',
 })
 export class ListGroupComponent {
+  // placeholder data
   listGroup: ListGroup = {
     items: [
       {
