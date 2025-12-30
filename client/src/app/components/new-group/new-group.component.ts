@@ -15,8 +15,14 @@ export class NewGroupComponent {
 
   groupName: string = '';
   groupDescription: string = '';
+  groupColor: string = '#ffffffff';
+  groupIcon: any;
 
   createGroup() {
+    throw new Error('Method not implemented.');
+  }
+
+  onIconSelected($event: Event) {
     throw new Error('Method not implemented.');
   }
 }

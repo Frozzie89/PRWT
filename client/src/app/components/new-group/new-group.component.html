@@ -6,6 +6,7 @@
     </div>
 
     <form (ngSubmit)="createGroup()" #groupForm="ngForm" class="form">
+      <!-- Group name input -->
       <div class="form-group">
         <label for="groupName">Group Name</label>
         <input
@@ -20,6 +21,7 @@
         />
       </div>
 
+      <!-- Description input -->
       <div class="form-group">
         <label for="groupDescription">Description</label>
         <textarea
@@ -30,6 +32,30 @@
           [(ngModel)]="groupDescription"
           placeholder="What is this group for?"
         ></textarea>
+      </div>
+
+      <!-- Colorpicker input -->
+      <div class="form-group form-group-inline">
+        <label for="groupColor">Group Color</label>
+        <input
+          type="color"
+          id="groupColor"
+          name="groupColor"
+          class="form-control colorpicker"
+          [(ngModel)]="groupColor"
+        />
+      </div>
+
+      <!-- Group icon input, import image -->
+      <div class="form-group form-group-inline">
+        <label for="groupIcon">Group Icon</label>
+        <input
+          type="file"
+          id="groupIcon"
+          name="groupIcon"
+          class="form-control"
+          (change)="onIconSelected($event)"
+        />
       </div>
 
       <div class="form-actions">
