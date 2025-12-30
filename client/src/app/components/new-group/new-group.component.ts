@@ -13,10 +13,10 @@ export class NewGroupComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() create = new EventEmitter<ListGroupItem>();
 
-  groupName: string = '';
-  groupDescription: string = '';
-  groupColor: string = '#ffffffff';
-  groupIcon: any;
+  name: string = '';
+  description: string = '';
+  color: string = '#ffffffff';
+  icon: any;
 
   createGroup() {
     throw new Error('Method not implemented.');
