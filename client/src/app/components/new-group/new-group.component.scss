@@ -107,11 +107,24 @@ button[disabled] {
   }
 }
 
-.invalid-feedback {
+.form-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 1.2rem; // reserves space
+}
+
+.field-error {
+  font-size: 0.8rem;
   color: #dc3545;
-  font-size: 0.875rem;
-  font-weight: bold;
-  margin-top: 0.25rem;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 120ms ease;
+}
+
+.field-error.visible {
+  opacity: 1;
 }
 
 @media (max-width: 600px) {

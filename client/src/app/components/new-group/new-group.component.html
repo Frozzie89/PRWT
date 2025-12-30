@@ -8,7 +8,14 @@
     <form (ngSubmit)="createGroup()" #groupForm="ngForm" class="form">
       <!-- Group name input -->
       <div class="form-group">
-        <label for="groupTitle">Group Title</label>
+        <div class="form-label-row">
+          <label for="groupTitle">Group Title</label>
+
+          <span class="field-error" [class.visible]="titleExists(title)">
+            This title already exists. Be creative!
+          </span>
+        </div>
+
         <input
           type="text"
           id="groupTitle"
@@ -19,14 +26,7 @@
           [(ngModel)]="title"
           [class.is-invalid]="titleExists(title)"
           placeholder="e.g. Best weekend trips"
-          required
         />
-      </div>
-
-      <div class="invalid-feedback">
-        @if (titleExists(title)) {
-          This title already exists. Be creative!
-        }
       </div>
 
       <!-- Description input -->
