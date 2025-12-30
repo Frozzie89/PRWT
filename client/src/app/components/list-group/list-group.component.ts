@@ -1,23 +1,13 @@
 import { Component } from '@angular/core';
 import { ListGroup } from '../../interfaces/list-group';
-import { NewGroupComponent } from '../new-group/new-group.component';
 
 @Component({
   selector: 'app-list-group',
-  imports: [NewGroupComponent],
+  imports: [],
   templateUrl: './list-group.component.html',
   styleUrl: './list-group.component.scss',
 })
 export class ListGroupComponent {
-  isAdding = false;
-
-  openAdd() {
-    this.isAdding = true;
-  }
-  closeAdd() {
-    this.isAdding = false;
-  }
-
   // placeholder data
   listGroup: ListGroup = {
     items: [

@@ -1,0 +1,16 @@
+<div class="page" [class.is-adding]="isAdding">
+  <div class="backdrop" (click)="closeAdd()"></div>
+
+  <main class="main">
+    <button class="btn" (click)="openAdd()">
+      <i class="bi bi-plus-square-dotted"></i>
+      New group
+    </button>
+
+    <app-list-group></app-list-group>
+  </main>
+
+  <aside class="panel" aria-label="Add new group item">
+    <app-new-group (cancel)="closeAdd()"> </app-new-group>
+  </aside>
+</div>

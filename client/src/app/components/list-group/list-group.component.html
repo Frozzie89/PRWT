@@ -1,31 +1,16 @@
-<div class="page" [class.is-adding]="isAdding">
-  <div class="backdrop" (click)="closeAdd()"></div>
-
-  <main class="main">
-    <button class="btn" (click)="openAdd()">
-      <i class="bi bi-plus-square-dotted"></i>
-      New group
-    </button>
-
-    <div class="grid-container">
-      @for (item of listGroup.items; track $index) {
-        <div class="card-container">
-          <div class="upper-container" [style.background-color]="item.color">
-            <div class="image-container">
-              <img [src]="item.icon" alt="list group image" />
-            </div>
-          </div>
-
-          <div class="lower-container">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-          </div>
+<div class="grid-container">
+  @for (item of listGroup.items; track $index) {
+    <div class="card-container">
+      <div class="upper-container" [style.background-color]="item.color">
+        <div class="image-container">
+          <img [src]="item.icon" alt="list group image" />
         </div>
-      }
-    </div>
-  </main>
+      </div>
 
-  <aside class="panel" aria-label="Add new group item">
-    <app-new-group (cancel)="closeAdd()"> </app-new-group>
-  </aside>
+      <div class="lower-container">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  }
 </div>
