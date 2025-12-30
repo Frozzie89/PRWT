@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ListGroupItem } from '../../interfaces/list-group-item';
 import { FormsModule } from '@angular/forms';
+import { GroupsService } from '../../service/groups.service';
 
 @Component({
   selector: 'app-new-group',
@@ -13,10 +14,14 @@ export class NewGroupComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() create = new EventEmitter<ListGroupItem>();
 
+  groupsService = inject(GroupsService);
+
   title: string = '';
   description: string = '';
   color: string = '#ffffffff';
   icon: any;
+
+  titleExists = (title: string) => this.groupsService.titleAlreadyExists(title);
 
   createGroup() {
     this.create.emit({

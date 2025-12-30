@@ -107,6 +107,13 @@ button[disabled] {
   }
 }
 
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
 @media (max-width: 600px) {
   .panel {
     padding: 1rem;
