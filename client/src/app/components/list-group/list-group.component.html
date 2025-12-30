@@ -1,5 +1,5 @@
 <div class="grid-container">
-  @for (item of listGroup.items; track $index) {
+  @for (item of listGroup(); track $index) {
     <div class="card-container">
       <div class="upper-container" [style.background-color]="item.color">
         <div class="image-container">

@@ -1,6 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { ListGroupComponent } from '../list-group/list-group.component';
 import { NewGroupComponent } from '../new-group/new-group.component';
+import { ListGroupItem } from '../../interfaces/list-group-item';
+import { GroupsService } from '../../service/groups.service';
 
 @Component({
   selector: 'app-main-container',
@@ -9,17 +11,27 @@ import { NewGroupComponent } from '../new-group/new-group.component';
   styleUrl: './main-container.component.scss',
 })
 export class MainContainerComponent {
+  groupsService = inject(GroupsService);
+
   isAdding = false;
 
-  openAdd() {
+  slideToAddForm() {
     this.isAdding = true;
   }
-  closeAdd() {
+
+  slideBack() {
     this.isAdding = false;
+  }
+
+  onCreate($event: ListGroupItem) {
+    this.groupsService.add($event);
+    this.slideBack();
   }
 
   @HostListener('document:keydown.escape')
   onEsc() {
-    if (this.isAdding) this.closeAdd();
+    if (this.isAdding) {
+      this.slideBack();
+    }
   }
 }

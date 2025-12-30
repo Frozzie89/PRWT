@@ -1,8 +1,8 @@
 <div class="page" [class.is-adding]="isAdding">
-  <div class="backdrop" (click)="closeAdd()"></div>
+  <div class="backdrop" (click)="slideBack()"></div>
 
   <main class="main">
-    <button class="btn" (click)="openAdd()">
+    <button class="btn" (click)="slideToAddForm()">
       <i class="bi bi-plus-square-dotted"></i>
       New group
     </button>
@@ -11,6 +11,6 @@
   </main>
 
   <aside class="panel" aria-label="Add new group item">
-    <app-new-group (cancel)="closeAdd()" (create)="closeAdd()"> </app-new-group>
+    <app-new-group (cancel)="slideBack()" (create)="onCreate($event)"></app-new-group>
   </aside>
 </div>
