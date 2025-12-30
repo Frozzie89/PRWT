@@ -8,15 +8,15 @@
     <form (ngSubmit)="createGroup()" #groupForm="ngForm" class="form">
       <!-- Group name input -->
       <div class="form-group">
-        <label for="groupName">Group Name</label>
+        <label for="groupTitle">Group Title</label>
         <input
           type="text"
-          id="groupName"
-          name="groupName"
+          id="groupTitle"
+          name="groupTitle"
           class="form-control"
           required
           minlength="2"
-          [(ngModel)]="name"
+          [(ngModel)]="title"
           placeholder="e.g. Best weekend trips"
         />
       </div>

@@ -13,16 +13,21 @@ export class NewGroupComponent {
   @Output() cancel = new EventEmitter<void>();
   @Output() create = new EventEmitter<ListGroupItem>();
 
-  name: string = '';
+  title: string = '';
   description: string = '';
   color: string = '#ffffffff';
   icon: any;
 
   createGroup() {
-    throw new Error('Method not implemented.');
+    this.create.emit({
+      title: this.title,
+      description: this.description,
+      color: this.color,
+      icon: this.icon,
+    });
   }
 
   onIconSelected($event: Event) {
-    throw new Error('Method not implemented.');
+    this.icon = ($event.target as HTMLInputElement).value;
   }
 }
