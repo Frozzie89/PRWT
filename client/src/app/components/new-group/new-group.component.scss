@@ -89,8 +89,7 @@ textarea.form-control {
 .colorpicker {
   padding: 0.2rem;
   height: 2.25rem;
-  max-width: 100px;
-  border-radius: 8px;
+  max-width: 150px;
   cursor: pointer;
 }
 
@@ -99,11 +98,17 @@ input[type='file'] {
   font-size: 0.9rem;
 }
 
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 0.75rem;
-  padding-top: 0.5rem;
 }
 
 button[disabled] {
@@ -131,6 +136,7 @@ button[disabled] {
   display: grid;
   place-items: center;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .icon-preview img {
