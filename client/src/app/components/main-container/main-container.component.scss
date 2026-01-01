@@ -1,0 +1,49 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.main,
+.panel {
+  transition: transform 520ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
+  min-height: 100vh;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: white;
+  z-index: 20;
+}
+
+.backdrop {
+  all: unset;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 10;
+}
+
+.page.is-adding {
+  .main {
+    transform: translateX(100%);
+  }
+  .panel {
+    transform: translateX(0);
+  }
+  .backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .page.is-adding .main {
+    transform: translateX(0);
+  }
+}
