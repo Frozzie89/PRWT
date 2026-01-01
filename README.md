@@ -2,6 +2,14 @@
 
 Phrase Ranker With Template
 
+This program is a simple yet powerful text-based entry voting platform.
+You can use it for listing anything ! 
+Few ranking ideas: websites, software, names, quotes, jokes, for now, anything that's unformatted (at least for now) text based is doable!
+
+An important note is that it uses OAuth2 and ONLY discord as of now, this is a independent choice, we will consider adding options in the future.
+
+If you have any suggestion, feel free to open an issue !
+
 ## Requirements
 
 - Node.js 25
@@ -26,10 +34,17 @@ docker compose up
 
 Open http://localhost:8080
 
-## Contributing
-
-Feel free to submit issues and pull requests.
-
 ## Reporting Issues
-
 If you encounter any issues while using PRWT, please report them by creating a new issue on this GitHub repository. Provide as much detail as possible to help us understand and resolve the problem.
+
+## Contributing
+Feel free to submit feature requests using issues or do your own pull request.
+
+# FAQ
+## The name is really difficult to say...
+No need to say P R W T each times, just call it `pʁut` !
+
+# Thanksies
+## Contributors
+- My wife @frozzie89 (unpaid labor)
+- Me (Frozzie's wife) (also unpaid) 
