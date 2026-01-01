@@ -1,0 +1,96 @@
+<div class="panel-wrapper">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <h1>Let's make a group</h1>
+        <p class="subtitle">Every great idea starts somewhere</p>
+      </div>
+
+      <button
+        type="button"
+        class="return bi bi-arrow-right"
+        (click)="onCancel()"
+        aria-label="Close panel"
+      ></button>
+    </div>
+
+    <form (ngSubmit)="createGroup()" #groupForm="ngForm" class="form">
+      <!-- Group name input -->
+      <div class="form-group">
+        <div class="form-label-row">
+          <label for="groupTitle">Group Title</label>
+
+          <span class="field-error" [class.visible]="titleExists(title)">
+            This title already exists. Be creative!
+          </span>
+        </div>
+
+        <input
+          type="text"
+          id="groupTitle"
+          name="groupTitle"
+          class="form-control"
+          required
+          minlength="2"
+          [(ngModel)]="title"
+          [class.is-invalid]="titleExists(title)"
+          placeholder="e.g. Best weekend trips"
+        />
+      </div>
+
+      <!-- Description input -->
+      <div class="form-group">
+        <label for="groupDescription">Description</label>
+        <textarea
+          id="groupDescription"
+          name="groupDescription"
+          class="form-control"
+          rows="4"
+          [(ngModel)]="description"
+          placeholder="What is this group for?"
+        ></textarea>
+      </div>
+
+      <!-- Colorpicker input -->
+      <div class="form-group form-group-inline">
+        <label for="groupColor">Group Color</label>
+        <input
+          type="color"
+          id="groupColor"
+          name="groupColor"
+          class="form-control colorpicker"
+          [(ngModel)]="color"
+        />
+      </div>
+
+      <!-- Group icon input, import image -->
+      <div class="form-group form-group-inline">
+        <label for="groupIcon">Group Icon</label>
+        <input
+          type="file"
+          id="groupIcon"
+          name="groupIcon"
+          class="form-control"
+          accept="image/*"
+          (change)="onIconSelected($event)"
+        />
+      </div>
+
+      <div class="form-footer">
+        @if (icon) {
+          <div class="icon-preview">
+            <img [src]="icon" alt="Icon preview" />
+          </div>
+        } @else {
+          <div></div>
+        }
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="!groupForm.form.valid">
+            Create Group
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

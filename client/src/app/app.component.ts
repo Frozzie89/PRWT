@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ListGroupComponent } from './components/list-group/list-group.component';
+import { MainContainerComponent } from './components/main-container/main-container.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListGroupComponent],
+  imports: [RouterOutlet, MainContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

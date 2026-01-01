@@ -1,6 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 body {
   font-family: 'Space Mono', monospace;
+}
+
+input {
+  font-family: 'Space Mono', monospace;
+}
+
+textarea {
+  font-family: 'Space Mono', monospace;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff006e;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
+  font-family: 'Space Mono', monospace;
+
+  &:hover {
+    background: #fff;
+    color: #ff006e;
+    border: 3px solid #ff006e;
+    box-shadow: none;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input[type='color']::-moz-color-swatch {
+  border: none;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+  border: none;
 }
