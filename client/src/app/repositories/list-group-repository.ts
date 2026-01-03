@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { PocketbaseClientService } from '../services/pocketbase-client.service';
 import type { Group, CreateGroupPayload } from '../interfaces/group';
 
-export type PbGroupRecord = {
+export interface PbGroupRecord {
   id: string;
   title: string;
   description: string;
@@ -10,7 +10,7 @@ export type PbGroupRecord = {
   icon?: string;
   created: string;
   updated: string;
-};
+}
 
 @Injectable({ providedIn: 'root' })
 export class GroupsRepository {

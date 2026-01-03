@@ -3,7 +3,7 @@ import type { RecordModel } from 'pocketbase';
 import { PocketbaseClientService } from './pocketbase-client.service';
 import { environment } from '../../environments/environment';
 
-type AuthState = { isValid: boolean; user: RecordModel | null; token: string };
+interface AuthState { isValid: boolean; user: RecordModel | null; token: string }
 
 @Injectable({ providedIn: 'root' })
 export class PocketbaseAuthService {
