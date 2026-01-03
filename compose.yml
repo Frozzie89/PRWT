@@ -1,4 +1,16 @@
 services:
+  pocketbase:
+    image: adrianmusante/pocketbase:latest
+    container_name: prwt-pocketbase
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./database:/pb
+      - ./docker/pocketbase/entrypoint.sh:/entrypoint.sh:ro
+    working_dir: /pb
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    user: "0:0"
+
   client:
     image: prwt-client
     build:
@@ -11,3 +23,6 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - NG_APP_PB_URL=http://pocketbase:8090
+    depends_on:
+      - pocketbase
