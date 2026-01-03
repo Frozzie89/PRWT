@@ -1,7 +1,7 @@
 # PRWT
 
 <p align="center">
-  <img src="client/assets/images/PRWT_Logo_Banner.png" alt="PRWT_full_logo"/>
+  <img src="client/src/assets/images/PRWT_Logo_Banner.png" alt="PRWT_full_logo"/>
 </p>
 
 Phrase Ranker With Template
