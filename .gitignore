@@ -1,35 +1,56 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+# Angular / Build outputs
+**/dist/
+**/out-tsc/
+**/tmp/
+**/coverage/
+**/bazel-out/
+**/e2e/test-output/
+**/.angular/
+**/.angular/cache
+**/.ng/
+**/.angular-cli.json
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+# Node / Package managers
+**/node_modules/
+**/package-lock.json
+**/yarn.lock
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
 
-# Pocketbase generated files
+# PocketBase
 **/pb_data/
 
 # Environment files
-/.env
+**/.env
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
+# TypeScript
+**/*.tsbuildinfo
 
-# TypeScript cache
-*.tsbuildinfo
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# IDE specific files
+# IDEs / Editors
 .idea/
-.vscode/
+.project
+.classpath
+.settings/
+.c9/
+*.launch
+*.sublime-workspace
+
+# VS Code
+**/.vscode/*
+!**/.vscode/
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+
+# Misc
+**/.sass-cache/
+**/.connect.lock
+**/libpeerconnection.log
+**/testem.log
+**/typings
+
+# OS files
+.DS_Store
+Thumbs.db
