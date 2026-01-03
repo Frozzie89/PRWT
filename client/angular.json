@@ -93,6 +93,9 @@
               }
             ],
             "styles": ["src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": [],
             "karmaConfig": "karma.conf.js"
           }
