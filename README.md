@@ -19,9 +19,9 @@ An important note is that it uses OAuth2 and ONLY discord as of now, this is a i
 - Angular CLI **20**
 - PocketBase
 
-### Optional
+### For containerized setup
 
-- Docker (for containerized setup)
+- Docker
 
 ## Run locally
 
