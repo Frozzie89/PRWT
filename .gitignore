@@ -12,6 +12,9 @@
 /package-lock.json
 /yarn.lock
 
+# Pocketbase generated files
+**/pb_data/
+
 # Environment files
 /.env
 
