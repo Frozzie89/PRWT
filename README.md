@@ -1,5 +1,9 @@
 # PRWT
 
+<p align="center">
+  <img src="client/assets/images/PRWT_Logo_Banner.png" alt="PRWT_full_logo"/>
+</p>
+
 Phrase Ranker With Template
 
 This program is a simple yet powerful text-based entry voting platform.
@@ -58,4 +62,4 @@ No need to say P R W T each times, just call it `pʁut` !
 
 ## Thanksies
 
-Thanks to my girlfriend @frezlotte for contributing, testing and supporting this project!
+Thanks to my girlfriend [@frezlotte](https://github.com/frezlotte) for contributing, testing and supporting this project!
