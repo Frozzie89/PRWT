@@ -1,7 +1,7 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ListGroupComponent } from '../list-group/list-group.component';
 import { NewGroupComponent } from '../new-group/new-group.component';
-import { CreateGroupPayload, Group } from '../../interfaces/group';
+import { CreateGroupPayload } from '../../interfaces/group';
 import { GroupsService } from '../../services/groups.service';
 
 @Component({
