@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './list-group-entries.component.html',
   styleUrl: './list-group-entries.component.scss',
 })
-export class ListGroupEntriesComponent {
-
-}
+export class ListGroupEntriesComponent {}
