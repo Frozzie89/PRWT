@@ -1,0 +1,77 @@
+/* Disable default cross-fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Isolation */
+::view-transition-image-pair(groups-page),
+::view-transition-image-pair(entries-page) {
+  isolation: isolate;
+}
+
+/* Forward: groups -> entries */
+::view-transition-old(groups-page) {
+  animation: vt-groups-out-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+::view-transition-new(entries-page) {
+  animation: vt-entries-in-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+/* Back: entries -> groups */
+::view-transition-old(entries-page) {
+  animation: vt-entries-out-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+::view-transition-new(groups-page) {
+  animation: vt-groups-in-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+@keyframes vt-entries-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes vt-entries-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes vt-groups-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes vt-groups-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(groups-page),
+  ::view-transition-new(groups-page),
+  ::view-transition-old(entries-page),
+  ::view-transition-new(entries-page) {
+    animation: none !important;
+  }
+}

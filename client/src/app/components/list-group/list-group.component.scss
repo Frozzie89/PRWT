@@ -9,6 +9,8 @@
 }
 
 .card-container {
+  all: unset;
+  cursor: pointer;
   width: 100%;
   max-width: 320px;
   background: #ffffff;
