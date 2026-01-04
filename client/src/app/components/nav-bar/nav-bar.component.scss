@@ -1,72 +1,84 @@
 @use 'variables' as *;
 
-.app-nav {
+.nav-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
+  gap: 1rem;
 
+  padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   background: #fff;
 
   border-bottom: 1px solid $color-accent;
   box-shadow: 0 4px 0 $color-accent;
-}
 
-.app-nav__logo {
-  display: inline-flex;
-  align-items: center;
+  .logo {
+    display: inline-flex;
+    align-items: center;
 
-  img {
-    height: 36px;
-    width: auto;
-    display: block;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.app-nav__links {
-  display: flex;
-  gap: 1rem;
-
-  a {
-    position: relative;
-    padding: 0.25rem 0.5rem;
-
-    font-weight: 600;
-    text-decoration: none;
-    color: #000;
-
-    border-radius: 6px;
-    transition: transform 0.12s ease;
-
-    &:hover {
-      transform: translate(-1px, -1px);
+    img {
+      height: 36px;
+      max-height: 48px;
+      width: auto;
+      display: block;
+    }
+    y &:hover {
       cursor: pointer;
     }
+  }
 
-    &.is-active {
-      background: $color-accent;
-      color: #fff;
-      box-shadow: 3px 3px 0 $color-accent;
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+
+    a {
+      position: relative;
+      padding: 0.25rem 0.5rem;
+
+      font-weight: 600;
+      text-decoration: none;
+      color: #000;
+
+      border-radius: 6px;
+      transition: transform 0.12s ease;
+
+      img {
+        height: 1em;
+        max-height: 48px;
+        width: auto;
+        margin-left: 0.25rem;
+        vertical-align: middle;
+        display: inline-block;
+      }
+
+      &:hover {
+        transform: translate(-1px, -1px);
+        cursor: pointer;
+      }
+
+      &.is-active {
+        background: $color-accent;
+        color: #fff;
+        box-shadow: 3px 3px 0 $color-accent;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        opacity: 0;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
     }
   }
-}
-
-.app-nav__links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: #000;
-  opacity: 0;
-}
-
-.app-nav__links a:hover::after {
-  opacity: 1;
 }
