@@ -32,7 +32,7 @@ npm run pb
 ```
 
 - Open http://localhost:4200 for the Angular frontend
-- Open http://localhost:8090/\_/ for the PocketBase admin panel
+- Open http://localhost:8090/_/ for the PocketBase admin panel
 
 ## Run with Docker
 
