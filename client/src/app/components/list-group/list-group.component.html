@@ -1,6 +1,6 @@
 <div class="grid-container">
   @for (item of listGroup(); track item.id) {
-    <div class="card-container">
+    <div class="card-container" (click)="openGroup(item.id)">
       <div class="upper-container" [style.background-color]="item.color">
         @if (item.iconUrl) {
           <div class="image-container">

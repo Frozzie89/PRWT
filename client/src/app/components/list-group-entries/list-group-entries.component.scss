@@ -1,0 +1,10 @@
+:host {
+  view-transition-name: none;
+  display: block;
+}
+
+.vt-entries {
+  view-transition-name: entries-page;
+  min-height: 100vh;
+  background: #fff;
+}
