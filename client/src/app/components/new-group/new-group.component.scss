@@ -1,5 +1,16 @@
 @use 'variables' as *;
 
+:host {
+  view-transition-name: none;
+  display: block;
+}
+
+.vt-add-groups {
+  view-transition-name: add-group-page;
+  min-height: 100vh;
+  background: #fff;
+}
+
 .panel-wrapper {
   min-height: 75vh;
   display: flex;

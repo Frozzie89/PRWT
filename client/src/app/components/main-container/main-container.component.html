@@ -1,16 +1,10 @@
-<div class="page vt-groups" [class.is-adding]="isAdding">
-  <button type="button" class="backdrop" (click)="slideBack()" aria-label="Close panel"></button>
-
+<div class="page vt-groups">
   <main class="main">
-    <button class="btn" (click)="slideToAddForm()">
+    <button class="btn" (click)="ToAddForm()">
       <i class="bi bi-plus-square-dotted"></i>
       New group
     </button>
 
     <app-list-group></app-list-group>
   </main>
-
-  <aside class="panel" aria-label="Add new group item">
-    <app-new-group (dismiss)="slideBack()" (create)="onCreate($event)"></app-new-group>
-  </aside>
 </div>

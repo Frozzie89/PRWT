@@ -1,34 +1,102 @@
-/* Disable default cross-fade */
+/* src/styles/view-transitions.scss */
+
+/* ------------------------------------------
+   Base: disable the default cross-fade
+------------------------------------------- */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
 }
 
-/* Isolation */
+/* Make the three page snapshots isolate properly */
+::view-transition-image-pair(add-group-page),
 ::view-transition-image-pair(groups-page),
 ::view-transition-image-pair(entries-page) {
   isolation: isolate;
 }
 
-/* Forward: groups -> entries */
-::view-transition-old(groups-page) {
-  animation: vt-groups-out-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
-}
-
+/* Optional: ensure each snapshot covers nicely */
+::view-transition-old(add-group-page),
+::view-transition-new(add-group-page),
+::view-transition-old(groups-page),
+::view-transition-new(groups-page),
+::view-transition-old(entries-page),
 ::view-transition-new(entries-page) {
-  animation: vt-entries-in-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  /* Helps avoid “weird” blending artifacts */
+  backface-visibility: hidden;
 }
 
-/* Back: entries -> groups */
-::view-transition-old(entries-page) {
-  animation: vt-entries-out-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+/* ------------------------------------------
+   Directional routing model:
+   add-group-page | groups-page | entries-page
+
+   - Going RIGHT (to entries):
+     groups slides out LEFT, entries slides in RIGHT
+     back: entries slides out RIGHT, groups slides in LEFT
+
+   - Going LEFT (to add-group):
+     groups slides out RIGHT, add slides in LEFT
+     back: add slides out LEFT, groups slides in RIGHT
+
+   IMPORTANT: This file assumes you set:
+   document.documentElement.dataset.vtDir = 'left' | 'right'
+   during NavigationStart, and clear it on NavigationEnd.
+
+   SCSS gotcha: use &::view-transition-* so selectors match.
+------------------------------------------- */
+
+/* -------- Going RIGHT: groups <-> entries -------- */
+html[data-vt-dir='right'] {
+  &::view-transition-old(groups-page) {
+    animation: out-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 10;
+  }
+
+  &::view-transition-new(entries-page) {
+    animation: in-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 20;
+  }
+
+  /* Back: entries -> groups */
+  &::view-transition-old(entries-page) {
+    animation: out-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 20;
+  }
+
+  &::view-transition-new(groups-page) {
+    animation: in-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 10;
+  }
 }
 
-::view-transition-new(groups-page) {
-  animation: vt-groups-in-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+/* -------- Going LEFT: groups <-> add-group -------- */
+html[data-vt-dir='left'] {
+  &::view-transition-old(groups-page) {
+    animation: out-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 10;
+  }
+
+  &::view-transition-new(add-group-page) {
+    animation: in-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 20;
+  }
+
+  /* Back: add-group -> groups */
+  &::view-transition-old(add-group-page) {
+    animation: out-left 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 20;
+  }
+
+  &::view-transition-new(groups-page) {
+    animation: in-right 520ms cubic-bezier(0.25, 0.8, 0.25, 1) both;
+    z-index: 10;
+  }
 }
 
-@keyframes vt-entries-in-right {
+/* ------------------------------------------
+   Keyframes (shared)
+------------------------------------------- */
+@keyframes in-right {
   from {
     transform: translateX(100%);
   }
@@ -37,7 +105,7 @@
   }
 }
 
-@keyframes vt-entries-out-right {
+@keyframes out-right {
   from {
     transform: translateX(0);
   }
@@ -46,16 +114,7 @@
   }
 }
 
-@keyframes vt-groups-out-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes vt-groups-in-left {
+@keyframes in-left {
   from {
     transform: translateX(-100%);
   }
@@ -64,14 +123,39 @@
   }
 }
 
-/* Reduced motion */
+@keyframes out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ------------------------------------------
+   Reduced motion
+------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root),
   ::view-transition-old(groups-page),
   ::view-transition-new(groups-page),
+  ::view-transition-old(add-group-page),
+  ::view-transition-new(add-group-page),
   ::view-transition-old(entries-page),
   ::view-transition-new(entries-page) {
     animation: none !important;
+  }
+
+  html[data-vt-dir='left'],
+  html[data-vt-dir='right'] {
+    &::view-transition-old(groups-page),
+    &::view-transition-new(groups-page),
+    &::view-transition-old(add-group-page),
+    &::view-transition-new(add-group-page),
+    &::view-transition-old(entries-page),
+    &::view-transition-new(entries-page) {
+      animation: none !important;
+    }
   }
 }
