@@ -1,7 +1,7 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { CreateGroupPayload } from '../../interfaces/group';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GroupsService } from '../../services/groups.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-group',
@@ -11,10 +11,8 @@ import { GroupsService } from '../../services/groups.service';
   styleUrl: './new-group.component.scss',
 })
 export class NewGroupComponent {
-  @Output() dismiss = new EventEmitter<void>();
-  @Output() create = new EventEmitter<CreateGroupPayload>();
-
   private readonly groupsService = inject(GroupsService);
+  private readonly router = inject(Router);
 
   title = '';
   description = '';
@@ -25,7 +23,7 @@ export class NewGroupComponent {
   titleExists = (title: string) => this.groupsService.titleAlreadyExists(title);
 
   createGroup() {
-    this.create.emit({
+    this.groupsService.add({
       title: this.title,
       description: this.description,
       color: this.color,
@@ -33,11 +31,12 @@ export class NewGroupComponent {
     });
 
     this.cleanup();
+    this.router.navigate(['/groups']);
   }
 
   onCancel() {
-    this.dismiss.emit();
     this.cleanup();
+    this.router.navigate(['/groups']);
   }
 
   cleanup() {

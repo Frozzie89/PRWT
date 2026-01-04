@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainContainerComponent } from './main-container.component';
+import { ListGroupsComponent } from './list-groups.component';
 
-describe('MainContainerComponent', () => {
-  let component: MainContainerComponent;
-  let fixture: ComponentFixture<MainContainerComponent>;
+describe('ListGroupsComponent', () => {
+  let component: ListGroupsComponent;
+  let fixture: ComponentFixture<ListGroupsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainContainerComponent],
+      imports: [ListGroupsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MainContainerComponent);
+    fixture = TestBed.createComponent(ListGroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
