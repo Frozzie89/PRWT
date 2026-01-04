@@ -1,0 +1,105 @@
+@use 'variables' as *;
+
+:host {
+  view-transition-name: none;
+  display: block;
+}
+
+.vt-groups {
+  view-transition-name: groups-page;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 40px;
+}
+
+.card-container {
+  all: unset;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  background: #ffffff;
+  border: 4px solid $color-accent;
+  box-shadow: 8px 8px 0 $color-accent;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 4px 4px 0 $color-accent;
+    transform: translate(4px, 4px);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(8px, 8px);
+    transition: all 0.1s ease;
+  }
+}
+
+.upper-container {
+  height: 140px;
+  border-bottom: 4px solid $color-accent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.image-container {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  border: 4px solid $color-accent;
+  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border: 2px solid $color-accent;
+  }
+}
+
+.lower-container {
+  padding: 60px 20px 30px;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: $color-accent;
+  }
+
+  h4 {
+    margin: 5px 0 15px;
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 14px;
+    color: $color-accent;
+    border: 2px dashed $color-accent;
+    padding: 10px;
+    background: #f0f0f0;
+    margin-bottom: 20px;
+  }
+}
