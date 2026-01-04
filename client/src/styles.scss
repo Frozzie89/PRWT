@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'variables' as *;
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
@@ -17,20 +17,20 @@ textarea {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background: #ff006e;
+  background: $color-primary;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
   font-size: 20px;
-  border: 3px solid #000;
-  box-shadow: 4px 4px 0 #000;
+  border: 3px solid $color-accent;
+  box-shadow: 4px 4px 0 $color-accent;
   transition: all 0.2s ease;
   font-family: 'Space Mono', monospace;
 
   &:hover {
     background: #fff;
-    color: #ff006e;
-    border: 3px solid #ff006e;
+    color: $color-primary;
+    border: 3px solid $color-primary;
     box-shadow: none;
   }
 }
