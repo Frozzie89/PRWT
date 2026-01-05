@@ -26,7 +26,7 @@ export class GroupEntriesRepository {
   async listByGroupId(groupId: string): Promise<GroupEntry[]> {
     const records = await this.pb.collection(this.collection).getFullList<PbGroupEntryRecord>({
       sort: '-created',
-      filter: `groupId="${groupId}"`,
+      filter: `group_id="${groupId}"`,
     });
     return records.map(r => this.toGroupEntry(r));
   }

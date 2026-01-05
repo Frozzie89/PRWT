@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,7 +13,7 @@ import { Group } from '../../interfaces/group';
   templateUrl: './list-group-entries.component.html',
   styleUrl: './list-group-entries.component.scss',
 })
-export class ListGroupEntriesComponent {
+export class ListGroupEntriesComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly groupEntriesService = inject(GroupEntriesService);
 
@@ -26,6 +26,11 @@ export class ListGroupEntriesComponent {
   readonly groupEntries = this.groupEntriesService.groupsEntries;
 
   newTextEntry = '';
+
+  ngOnInit(): void {
+    this.groupEntriesService.loadByGroupId(this.group()?.id ?? '');
+    this.groupEntriesService.enableRealtime();
+  }
 
   addEntry() {
     const group = this.group();
