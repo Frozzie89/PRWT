@@ -1,6 +1,6 @@
 import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { CreateGroupPayload, Group } from '../interfaces/group';
-import { GroupsRepository, PbGroupRecord } from '../repositories/list-group-repository';
+import { GroupsRepository, PbGroupRecord } from '../repositories/groups-repository';
 import { from } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
