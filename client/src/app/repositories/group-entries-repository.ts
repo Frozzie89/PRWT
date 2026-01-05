@@ -23,6 +23,14 @@ export class GroupEntriesRepository {
     return records.map(r => this.toGroupEntry(r));
   }
 
+  async listByGroupId(groupId: string): Promise<GroupEntry[]> {
+    const records = await this.pb.collection(this.collection).getFullList<PbGroupEntryRecord>({
+      sort: '-created',
+      filter: `groupId="${groupId}"`,
+    });
+    return records.map(r => this.toGroupEntry(r));
+  }
+
   async create(data: CreateGroupEntryPayload): Promise<GroupEntry> {
     return await this.pb.collection(this.collection).create<PbGroupEntryRecord>(data);
   }
