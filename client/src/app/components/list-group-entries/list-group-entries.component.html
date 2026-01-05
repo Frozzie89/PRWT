@@ -1,6 +1,6 @@
 <div class="vt-entries">
   <div class="page-body">
-    @for (item of groupEntries(); track item.created) {
+    @for (item of groupEntries().slice().reverse(); track item.created) {
       <div class="entry">
         <div class="voting">
           <button type="button" class="bi bi bi-chevron-up" aria-label="Increase vote"></button>
