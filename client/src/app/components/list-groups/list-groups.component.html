@@ -5,6 +5,13 @@
       New group
     </button>
 
+    @if (listGroup().length === 0) {
+      <p class="no-groups-message">
+        Nothing here yet. <br />
+        🗣️ It's waiting for its first idea
+      </p>
+    }
+
     <div class="grid-container">
       @for (item of listGroup(); track item.id) {
         <button class="card-container" (click)="openGroup(item.id)">
