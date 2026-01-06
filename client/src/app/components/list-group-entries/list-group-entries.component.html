@@ -1,4 +1,12 @@
 <div class="vt-entries">
+  <div class="page-header">
+    <h2 class="title prwt-logo-text">{{ group()?.title }}</h2>
+
+    @if (group()?.description) {
+      <p class="description">{{ group()?.description }}</p>
+    }
+  </div>
+
   <div class="page-body">
     @for (item of groupEntries().slice().reverse(); track item.created) {
       <div class="entry">
