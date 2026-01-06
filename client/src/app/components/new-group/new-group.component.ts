@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GroupsService } from '../../services/groups.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-group',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './new-group.component.html',
   styleUrl: './new-group.component.scss',
 })
@@ -30,25 +30,7 @@ export class NewGroupComponent {
       iconFile: this.iconFile,
     });
 
-    this.cleanup();
     this.router.navigate(['/groups']);
-  }
-
-  onCancel() {
-    this.cleanup();
-    this.router.navigate(['/groups']);
-  }
-
-  cleanup() {
-    if (this.iconUrl) {
-      URL.revokeObjectURL(this.iconUrl);
-    }
-
-    this.title = '';
-    this.description = '';
-    this.color = '#ffffffff';
-    this.iconUrl = null;
-    this.iconFile = null;
   }
 
   onIconSelected(event: Event): void {
