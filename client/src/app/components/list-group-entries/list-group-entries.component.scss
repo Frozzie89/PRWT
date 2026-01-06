@@ -8,7 +8,7 @@
 .vt-entries {
   view-transition-name: entries-page;
   background: #fff;
-  min-height: 89vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -101,11 +101,15 @@
 .page-body {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .page-footer {
-  position: sticky;
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
+  width: 100%;
   background: #fff;
   z-index: 10;
 }
