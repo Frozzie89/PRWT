@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { GroupsService } from './groups.service';
-import { GroupsRepository } from '../repositories/list-group-repository';
+import { GroupsRepository } from '../repositories/groups-repository';
 import type { Group } from '../interfaces/group';
 
 describe('GroupsService', () => {

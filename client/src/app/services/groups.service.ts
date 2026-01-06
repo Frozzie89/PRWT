@@ -1,6 +1,6 @@
 import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { CreateGroupPayload, Group } from '../interfaces/group';
-import { GroupsRepository, PbGroupRecord } from '../repositories/list-group-repository';
+import { GroupsRepository, PbGroupRecord } from '../repositories/groups-repository';
 import { from } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -20,6 +20,14 @@ export class GroupsService {
   async load() {
     const list = await this.groupsRepository.list();
     this._groups.set(list);
+  }
+
+  async getById(id: string): Promise<Group> {
+    const group = this.groups().find(g => g.id === id);
+    if (!group) {
+      throw new Error(`Group with id ${id} not found`);
+    }
+    return group;
   }
 
   titleAlreadyExists(title: string) {

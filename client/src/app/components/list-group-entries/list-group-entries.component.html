@@ -1,10 +1,10 @@
 <div class="vt-entries">
   <div class="page-body">
-    @for (item of entries; track $index) {
+    @for (item of groupEntries().slice().reverse(); track item.created) {
       <div class="entry">
         <div class="voting">
           <button type="button" class="bi bi bi-chevron-up" aria-label="Increase vote"></button>
-          <p class="total-votes">{{ item.totalVotes }}</p>
+          <p class="total-votes">0</p>
           <button type="button" class="bi bi bi-chevron-down" aria-label="Decrease vote"></button>
         </div>
         <p>{{ item.text }}</p>
