@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import { Group } from '../../interfaces/group';
 
 @Component({
   selector: 'app-list-group-entries',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './list-group-entries.component.html',
   styleUrl: './list-group-entries.component.scss',
 })

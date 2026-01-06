@@ -1,5 +1,12 @@
 <div class="vt-entries">
   <div class="page-header">
+    <button
+      type="button"
+      class="return bi bi-arrow-left"
+      aria-label="Close panel"
+      [routerLink]="'/groups'"
+    ></button>
+
     <h2 class="title prwt-logo-text">{{ group()?.title }}</h2>
 
     @if (group()?.description) {

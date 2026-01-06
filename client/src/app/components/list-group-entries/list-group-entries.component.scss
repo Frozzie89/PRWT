@@ -13,6 +13,22 @@
   flex-direction: column;
 }
 
+.return {
+  all: unset;
+  font-size: 2rem;
+  cursor: pointer;
+  color: $color-primary-light;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+
+  &:hover {
+    color: $color-primary;
+    transform: translateX(-2px);
+  }
+}
+
 .page-header {
   display: flex;
   flex-direction: row;

@@ -253,11 +253,11 @@ button[disabled] {
   transition:
     color 160ms ease,
     transform 160ms ease;
-}
 
-.return:hover {
-  color: $color-primary;
-  transform: translateX(2px);
+  &:hover {
+    color: $color-primary;
+    transform: translateX(2px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
