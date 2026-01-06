@@ -1,10 +1,8 @@
-# PRWT
+# Phrase Ranker With Template
 
 <p align="center">
   <img src="client/src/assets/images/PRWT_Logo_Banner.png" alt="PRWT_full_logo"/>
 </p>
-
-Phrase Ranker With Template
 
 This program is a simple yet powerful text-based entry voting platform.
 You can use it for listing anything !
@@ -30,13 +28,19 @@ An important note is that it uses OAuth2 and ONLY discord as of now, this is a i
 ## Run locally
 
 ```sh
-cd client
-npm run start
-npm run pb
+# Angular frontend
+npm start --prefix client/
+
+# PocketBase backend
+pocketbase serve --dir database/pb_data/
 ```
 
 - Open http://localhost:4200 for the Angular frontend
-- Open http://localhost:8090/\_/ for the PocketBase admin panel
+- Open http://localhost:8090/_/ for the PocketBase admin panel
+
+### Note
+
+To login to the PocketBase admin panel, see logs when starting PocketBase. It will print out a link to create the first admin user.
 
 ## Run with Docker
 
