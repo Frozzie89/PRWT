@@ -23,16 +23,21 @@ export class PocketbaseAuthService {
   }
 
   async loginWithOAuth2(): Promise<void> {
+    // Initiate OAuth2 login with Discord provider
     const response = await this.pb.collection('users').authWithOAuth2({
       provider: 'discord',
       scopes: ['identify'],
     });
 
+    // Update user record with additional info from Discord
     const userId = this.pb.authStore.record?.id;
     const raw = (response as any)?.meta?.rawUser;
 
-    if (!userId || !raw) return;
+    if (!userId || !raw) {
+      return;
+    }
 
+    // Update user details in PocketBase with data from Discord
     try {
       const updated = await this.pb.collection('users').update(userId, {
         discordId: raw.id,
