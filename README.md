@@ -27,6 +27,16 @@ An important note is that it uses OAuth2 and ONLY discord as of now, this is a i
 
 ## Run locally
 
+### Setup
+
+Copy the example env file. Fill in your secret keys.
+
+```sh
+cp .env.example .env
+```
+
+### Start the application
+
 ```sh
 # Angular frontend
 npm start --prefix client/
@@ -36,7 +46,7 @@ pocketbase serve --dir database/pb_data/
 ```
 
 - Open http://localhost:4200 for the Angular frontend
-- Open http://localhost:8090/_/ for the PocketBase admin panel
+- Open http://localhost:8090/\_/ for the PocketBase admin panel
 
 ### Note
 
