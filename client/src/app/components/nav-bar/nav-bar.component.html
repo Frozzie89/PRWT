@@ -9,7 +9,7 @@
         >Login with <img src="assets/images/discord-icon.svg" alt="Discord logo" />
       </a>
     } @else {
-      <p>Hi, {{ auth.currentUser()?.displayName }}</p>
+      <p>{{ welcomeMessage() }}</p>
       <a routerLink="/account" routerLinkActive="is-active">Account</a>
       <a (click)="auth.logout()">Logout</a>
     }
