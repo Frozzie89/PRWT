@@ -4,9 +4,14 @@
   </a>
 
   <div class="links">
-    <a routerLink="/account" routerLinkActive="is-active">Account</a>
-    <a (click)="auth.loginWithOAuth2()"
-      >Login with <img src="assets/images/discord-icon.svg" alt="Discord logo" />
-    </a>
+    @if (!auth.isLoggedIn()) {
+      <a (click)="auth.loginWithOAuth2()"
+        >Login with <img src="assets/images/discord-icon.svg" alt="Discord logo" />
+      </a>
+    } @else {
+      <p>Hi, {{ auth.currentUser()?.displayName }}</p>
+      <a routerLink="/account" routerLinkActive="is-active">Account</a>
+      <a (click)="auth.logout()">Logout</a>
+    }
   </div>
 </nav>

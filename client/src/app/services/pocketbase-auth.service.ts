@@ -1,6 +1,7 @@
 import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import type { RecordModel } from 'pocketbase';
 import { PocketbaseClientService } from './pocketbase-client.service';
+import { CurrentUser } from '../interfaces/current-user';
 
 interface AuthState {
   isValid: boolean;
@@ -14,8 +15,22 @@ export class PocketbaseAuthService {
   private readonly destroyRef = inject(DestroyRef);
 
   private readonly _auth = signal<AuthState>(this.snapshot());
-  readonly user = computed(() => this._auth().user);
+  readonly userRecord = computed(() => this._auth().user);
   readonly isLoggedIn = computed(() => this._auth().isValid);
+
+  readonly currentUser = computed<CurrentUser | null>(() => {
+    const r = this._auth().user;
+    if (!this._auth().isValid || !r) return null;
+
+    return {
+      id: r.id,
+      discordId: (r as any).discordId,
+      handle: (r as any).handle,
+      displayName: (r as any).displayName,
+      role: (r as any).role,
+      avatarUrl: (r as any).avatarUrl,
+    };
+  });
 
   constructor() {
     const unsubscribe = this.pb.authStore.onChange(() => this._auth.set(this.snapshot()), true);
@@ -51,6 +66,15 @@ export class PocketbaseAuthService {
       console.error('User update after OAuth failed:', err);
       throw err;
     }
+  }
+
+  async refreshCurrentUser(): Promise<void> {
+    if (!this.pb.authStore.isValid || !this.pb.authStore.record?.id) {
+      return;
+    }
+
+    const fresh = await this.pb.collection('users').getOne(this.pb.authStore.record.id);
+    this.pb.authStore.save(this.pb.authStore.token, fresh);
   }
 
   logout() {
