@@ -2,26 +2,40 @@ services:
   pocketbase:
     image: adrianmusante/pocketbase:latest
     container_name: prwt-pocketbase
-    ports:
-      - "8090:8090"
+    network_mode: "host"
     volumes:
       - ./database:/pb
     user: "0:0"
     entrypoint: ["pocketbase"]
     command: ["serve", "--http=0.0.0.0:8090", "--dir=/pb/pb_data"]
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: prwt-keycloak
+    network_mode: "host"
+    command: ["start-dev"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT: "false"
+      KC_PROXY: "edge"
+
   client:
     image: prwt-client
     build:
       context: .
       dockerfile: docker/client/Dockerfile
-    ports:
-      - "8080:4200"
+    network_mode: "host"
     volumes:
       - ./client:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - NG_APP_PB_URL=http://pocketbase:8090
+      - NG_APP_PB_URL=http://localhost:8090
+      - NG_APP_KC_URL=http://localhost:8081
+      - NG_APP_KC_REALM=prwt
+      - NG_APP_KC_CLIENT_ID=prwt-frontend
     depends_on:
       - pocketbase
+      - keycloak
